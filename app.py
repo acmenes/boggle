@@ -11,22 +11,24 @@ app.config['SECRET_KEY'] = "MissMillieIsGood"
 app.config['DEBUG_TB_INTERCEPT_REDIRECT'] = False
 debug = DebugToolbarExtension(app)
 
+real_board = Boggle()
 
 @app.route('/')
 def home_page():
-    real_board = Boggle()
     game_board = real_board.make_board()
+    session['game_board'] = game_board
     return render_template('home.html', game_board=game_board)
 
 @app.route('/check')
 def check_word():
-    # return redirect('home.html')
-    return jsonify (
-        message="It works!",
-        category="success",
-        status=200
-    )
-
+    word = request.args["word"]
+    board = session["game_board"]
+    response = real_board.check_valid_word(board, word)
+    return jsonify({
+        "result": response,
+        "status": 200,
+        "word": word
+        })
 
 @app.route('/test')
 def test_board():
@@ -34,3 +36,7 @@ def test_board():
     board = Boggle()
     my_board = str(board.make_board())
     return my_board
+
+@app.route('/game-over')
+def game_over():
+    return "Game is over!"

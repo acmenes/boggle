@@ -1,14 +1,28 @@
+// everything that has to do with logic for the class goes here
+
 class Boggle {
-    constructor(board, time, score){
-        this.board = board,
+    constructor(time, score){
+        // this.board = board,
         this.time = time, 
         this.score = score
+        this.timerFunction()
+        this.scoreFunction()
     }
 
-    async submitWord(e){
-        e.preventDefault()
-        const res = await axios.get('/check')
-        console.log(res)
-        console.debug("Submit Word")
+    timerFunction(){
+        console.log("timer")
     }
+
+    scoreFunction(){
+        console.log("score")
+    }
+}
+
+const $startGame = $('#start-game')
+
+$('$startGame').on("click", startGame())
+
+async function startGame() {
+    console.log("it works!")
+    const game = new Boggle(time = 60, score = 0)
 }

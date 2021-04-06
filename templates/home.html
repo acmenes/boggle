@@ -6,7 +6,7 @@
 
 <!-- Really clunky way -->
 <!-- I want to make my for loop work with these coordinates -->
-<div class="game-board">
+<!-- <div class="game-board">
     <div class="row">
         <div class="tile">
             {{game_board[0][0]}}
@@ -92,10 +92,16 @@
             {{game_board[4][4]}}
         </div>
     </div>
-</div>
+</div> -->
 
-<!-- {% for x in game_board %}
-<div><h3>{{x}}</h3></div>
-{% endfor %} -->
+<!---I got it working!-->
+{% for x in game_board %}
+<div class="row"></div>
+{% for y in x %}
+<div class="tile"><h3>{{y}}</h3></div>
+{% endfor %}
+{% endfor %}
+
+<!-- the loop needs to have a for x and for y?  -->
 <br><br>
 {% endblock %}
