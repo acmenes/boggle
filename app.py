@@ -21,6 +21,7 @@ def home_page():
 
 @app.route('/check')
 def check_word():
+    print("received")
     word = request.args["word"]
     board = session["game_board"]
     response = real_board.check_valid_word(board, word)

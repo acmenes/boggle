@@ -1,28 +1,33 @@
 // everything that has to do with logic for the class goes here
 
 class Boggle {
-    constructor(time, score){
+    constructor(time, timeField, scoreField){
         // this.board = board,
         this.time = time, 
-        this.score = score
+        this.score = 0
+        this.timeField=timeField;
+        this.scoreField=scoreField;
         this.timerFunction()
-        this.scoreFunction()
+        //this.scoreFunction()
+        this.scoreField.text(this.score);
     }
 
     timerFunction(){
-        console.log("timer")
+        this.timeField.text(this.time);
+        let idInt=setInterval(() => {
+            this.time--;
+            if(this.time === 0){
+                clearInterval(idInt)
+                alert("Game Over")
+                alert(`Your score is ${this.score}`)
+            }
+            this.timeField.text(this.time);
+        }, 1000);
     }
 
-    scoreFunction(){
-        console.log("score")
+    addScore(pt){
+        this.score+=pt;
+        this.scoreField.text(this.score)
+
     }
-}
-
-const $startGame = $('#start-game')
-
-$('$startGame').on("click", startGame())
-
-async function startGame() {
-    console.log("it works!")
-    const game = new Boggle(time = 60, score = 0)
 }

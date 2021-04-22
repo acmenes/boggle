@@ -12,18 +12,19 @@
 <body>
     <h1>It's Time for BOGGLE!</h1>
     <div class="score-time">
-        <h2 class="score" id="score">Score:</h2>
-        <h2 class="time" id="time">Time:</h2>
+        <h2 class="score" >Score: <span id="score"></span></h2>
+        <h2 class="time" >Time: <span id="time"></span></h2>
+        <!-- <h2 class="found-words">Found Words: <span id="found-words"></span></h2> -->
     </div>
     {% block content %} {% endblock %}
     <form>
-        <input type="text" name="word">
+        <input type="text" name="word" id="word">
         <button id="submit">Submit Word</button>
     </form>
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="static/boggle.js"></script>
     <script src="static/app.js"></script>
-    <!-- <script src="static/boggle.js"></script> -->
 </body>
 
 </html>
